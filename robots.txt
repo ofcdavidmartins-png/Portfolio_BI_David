@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daviddmartins.github.io/Portfolio-David/sitemap.xml

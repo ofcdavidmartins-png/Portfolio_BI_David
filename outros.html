@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Outros · Projetos · David Martins</title>
   <meta name="description" content="Outros projetos de David Martins — SQL, Excel avançado, web e experimentos multidisciplinares." />
+  <meta name="theme-color" content="#1A1814" />
+  <link rel="canonical" href="./outros.html" />
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,29 +18,47 @@
   <link rel="stylesheet" href="css/components.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__label">David Martins</div>
+    <div class="ticker__scroll">
+      <div class="ticker__track">
+        <span class="ticker__item">SQL · Excel · Web</span>
+        <span class="ticker__item">Experimentos multidisciplinares</span>
+        <span class="ticker__item">Modelagem e Data Mart</span>
+        <span class="ticker__item">Brasília, DF</span>
+        <span class="ticker__item">SQL · Excel · Web</span>
+        <span class="ticker__item">Experimentos multidisciplinares</span>
+        <span class="ticker__item">Modelagem e Data Mart</span>
+        <span class="ticker__item">Brasília, DF</span>
+      </div>
+    </div>
+  </div>
+
   <header class="navbar" role="banner">
     <div class="container navbar__inner">
-      <a href="index.html" class="navbar__brand" aria-label="David Martins - Início">
-        David<span>.</span>Martins
-      </a>
-      <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="index.html" class="navbar__brand"><span class="dot"></span> David Martins</a>
+      <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu"><span></span><span></span><span></span></button>
       <nav class="navbar__menu" id="primary-menu" aria-label="Principal">
-        <a class="navbar__link" href="index.html">Início</a>
-        <a class="navbar__link" href="powerbi.html">Power BI</a>
-        <a class="navbar__link" href="python.html">Python</a>
-        <a class="navbar__link" href="outros.html">Outros</a>
-        <a class="navbar__link" href="index.html#contato">Contato</a>
+        <a class="navbar__link" href="index.html"><span class="num">01</span><span data-i18n="nav.home">Início</span></a>
+        <a class="navbar__link" href="powerbi.html"><span class="num">02</span><span data-i18n="nav.powerbi">Power BI</span></a>
+        <a class="navbar__link" href="python.html"><span class="num">03</span><span data-i18n="nav.python">Python</span></a>
+        <a class="navbar__link" href="outros.html"><span class="num">04</span><span data-i18n="nav.outros">Outros</span></a>
+        <a class="navbar__link" href="index.html#contato"><span class="num">05</span><span data-i18n="nav.contact">Contato</span></a>
       </nav>
+      <div class="navbar__actions">
+        <button id="lang-toggle" class="icon-btn" type="button">EN</button>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Mudar tema"><span id="theme-icon">☼</span></button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="page-header">
       <div class="container reveal">
-        <p class="page-header__category">Categoria</p>
-        <h1 class="page-header__title">Outros</h1>
+        <p class="page-header__category" data-i18n="nav.outros">Outros</p>
+        <h1 class="page-header__title">Ou<em>tros</em></h1>
         <p class="page-header__desc">
           Projetos multidisciplinares envolvendo SQL, Excel avançado, front-end e
           experimentos diversos.
@@ -46,123 +66,23 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="outros-prof-title">
+    <section class="section" aria-labelledby="out-title">
       <div class="container">
         <div class="section__head reveal">
           <div>
-            <span class="eyebrow">Trabalho</span>
-            <h2 id="outros-prof-title" class="section-title">Projetos profissionais</h2>
-            <p>Soluções complementares entregues em projetos reais.</p>
+            <div class="section__num"><span class="big">01</span><span class="label">Projetos</span></div>
+            <h2 id="out-title" class="section-title">Todos os <em>outros</em> projetos</h2>
+            <p>Use o filtro para alternar entre projetos profissionais e pessoais.</p>
           </div>
         </div>
 
-        <div class="grid reveal">
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/out-1.svg" alt="Modelagem SQL" loading="lazy" />
-              <span class="card__badge">Destaque</span>
-            </div>
-            <div class="card__body">
-              <span class="card__category">SQL · Profissional</span>
-              <h3 class="card__title">Modelagem de Data Mart</h3>
-              <p class="card__desc">Esquema estrela para consumo em Power BI com views e índices otimizados.</p>
-              <div class="card__tags">
-                <span class="card__tag">SQL Server</span>
-                <span class="card__tag">Modelagem</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/out-2.svg" alt="Excel avançado" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Excel · Profissional</span>
-              <h3 class="card__title">Planilha de Controle</h3>
-              <p class="card__desc">Dashboard em Excel com Power Query, fórmulas dinâmicas e macros VBA.</p>
-              <div class="card__tags">
-                <span class="card__tag">Power Query</span>
-                <span class="card__tag">VBA</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" aria-labelledby="outros-pessoal-title">
-      <div class="container">
-        <div class="section__head reveal">
-          <div>
-            <span class="eyebrow">Estudos</span>
-            <h2 id="outros-pessoal-title" class="section-title">Projetos pessoais</h2>
-            <p>Experimentos de estudo em tecnologias diversas.</p>
-          </div>
+        <div class="filters" data-target="#out-mount" role="group" aria-label="Filtros de projeto">
+          <button class="filter is-active" data-filter="all" data-i18n="filters.all">Todos</button>
+          <button class="filter" data-filter="profissional" data-i18n="filters.profissional">Profissionais</button>
+          <button class="filter" data-filter="pessoal" data-i18n="filters.pessoal">Pessoais</button>
         </div>
 
-        <div class="grid reveal">
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/out-3.svg" alt="Landing page responsiva" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Web · Pessoal</span>
-              <h3 class="card__title">Landing Page Responsiva</h3>
-              <p class="card__desc">Página estática focada em performance, SEO e acessibilidade.</p>
-              <div class="card__tags">
-                <span class="card__tag">HTML</span>
-                <span class="card__tag">CSS</span>
-                <span class="card__tag">JS</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/out-4.svg" alt="Scraper" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Outros · Pessoal</span>
-              <h3 class="card__title">Scraper de Dados Públicos</h3>
-              <p class="card__desc">Coletor resiliente com retry, cache local e exportação para Parquet.</p>
-              <div class="card__tags">
-                <span class="card__tag">Requests</span>
-                <span class="card__tag">Parquet</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/out-5.svg" alt="API em Node" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Outros · Pessoal</span>
-              <h3 class="card__title">API em Node.js</h3>
-              <p class="card__desc">API REST simples com Express para consumo de dados locais.</p>
-              <div class="card__tags">
-                <span class="card__tag">Node</span>
-                <span class="card__tag">Express</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-        </div>
+        <div class="grid" id="out-mount" data-render-category="outros" data-filter="all"></div>
       </div>
     </section>
   </main>
@@ -171,36 +91,39 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <p class="footer__title">David<span style="color:var(--accent)">.</span>Martins</p>
-          <p>Análise de dados e automação de processos.<br />Brasília, DF.</p>
+          <p class="footer__title">David Martins</p>
+          <p>Otimização e automação de processos.<br />Brasília, DF.</p>
         </div>
         <div class="footer__col">
           <h4>Navegação</h4>
           <ul class="footer__list">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="powerbi.html">Power BI</a></li>
-            <li><a href="python.html">Python</a></li>
-            <li><a href="outros.html">Outros</a></li>
+            <li><a href="index.html" data-i18n="nav.home">Início</a></li>
+            <li><a href="powerbi.html" data-i18n="nav.powerbi">Power BI</a></li>
+            <li><a href="python.html" data-i18n="nav.python">Python</a></li>
+            <li><a href="outros.html" data-i18n="nav.outros">Outros</a></li>
           </ul>
         </div>
         <div class="footer__col">
           <h4>Contato</h4>
           <ul class="footer__list">
-            <li><a href="mailto:contato@davidmartins.dev">contato@davidmartins.dev</a></li>
-            <li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/" rel="noopener" target="_blank">GitHub</a></li>
+            <li><a href="mailto:ofcdavidmartins@gmail.com">ofcdavidmartins@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/daviddmartins/" rel="noopener" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/ofcdavidmartins-png" rel="noopener" target="_blank">GitHub</a></li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© <span id="currentYear"></span> David Martins. Todos os direitos reservados.</span>
-        <span>Feito com HTML, CSS e JS.</span>
+        <span>© <span id="currentYear"></span> David Martins. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
+        <span data-i18n="footer.made">Feito com HTML, CSS e JS.</span>
       </div>
     </div>
   </footer>
 
+  <button class="back-to-top" aria-label="Voltar ao topo">↑</button>
   <div class="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/i18n.js" defer></script>
+  <script src="js/projects.js" defer></script>
   <script src="js/script.js" defer></script>
 </body>
 </html>

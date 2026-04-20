@@ -1,6 +1,6 @@
 # Portfólio · David Martins
 
-Portfólio pessoal de **David Martins** — analista focado em **análise de dados, automação de processos e visualização**. O projeto é uma aplicação **estática multi-página** construída com HTML, CSS e JavaScript puros, pronta para deploy em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel, etc.).
+Portfólio pessoal de **David Martins** — analista focado em **análise de dados, automação de processos e visualização**. Aplicação **estática multi-página** construída com HTML, CSS e JavaScript puros, pronta para deploy em qualquer hospedagem estática.
 
 ---
 
@@ -11,32 +11,23 @@ Portfólio pessoal de **David Martins** — analista focado em **análise de dad
 - [Estrutura de pastas](#estrutura-de-pastas)
 - [Como rodar localmente](#como-rodar-localmente)
 - [Deploy](#deploy)
-- [Padrões adotados](#padrões-adotados)
+- [Funcionalidades](#funcionalidades)
 
 ---
 
 ## Sobre
 
-O portfólio organiza os projetos em **três categorias** — Power BI, Python e Outros — e em cada categoria separa os trabalhos entre **Profissionais** (realizados no ambiente corporativo) e **Pessoais** (estudos e experimentos).
-
-A home (`index.html`) apresenta:
-
-- Hero com apresentação pessoal.
-- Acesso rápido às categorias.
-- Carrossel de **últimos projetos** e **melhores projetos**.
-- Bloco de contato.
-
-As subpáginas mantêm o mesmo header, footer e linguagem visual, variando apenas o conteúdo listado.
+Portfólio organizado em **três categorias** — Power BI, Python e Outros — com separação entre projetos **Profissionais** e **Pessoais**. A home apresenta hero com foto, identidade, timeline de carreira, categorias, projetos em destaque, stack e formulário de contato.
 
 ---
 
 ## Tecnologias
 
-- **HTML5** semântico
-- **CSS3** modular (reset, layout, componentes) com variáveis CSS e tipografia fluida via `clamp()`
-- **JavaScript (ES2022)** vanilla, sem frameworks
+- **HTML5** semântico com landmarks e ARIA
+- **CSS3** modular com variáveis, `clamp()` fluido, tema dark/light
+- **JavaScript ES2022** vanilla (sem frameworks)
 - **Google Fonts** — Syne, DM Sans, Instrument Serif
-- **SVG** para imagens de projetos (leves e escaláveis)
+- **SVG** para imagens de projetos
 
 ---
 
@@ -44,73 +35,86 @@ As subpáginas mantêm o mesmo header, footer e linguagem visual, variando apena
 
 ```
 Portfolio-David/
-├── index.html              # Home
-├── powerbi.html            # Projetos em Power BI
-├── python.html             # Projetos em Python
-├── outros.html             # Projetos diversos
-├── README.md               # Este arquivo
-├── DOC.md                  # Documentação técnica detalhada
+├── index.html              # Home (hero, sobre, stack, categorias, projetos, contato)
+├── powerbi.html            # Projetos Power BI com filtros
+├── python.html             # Projetos Python com filtros
+├── outros.html             # Projetos diversos com filtros
+├── projeto.html            # Template de página de detalhe de projeto
+├── sitemap.xml
+├── robots.txt
+├── README.md
+├── DOC.md                  # Documentação técnica completa
 ├── css/
-│   ├── reset.css           # Normalização entre navegadores
-│   ├── style.css           # Layout, tipografia, tokens
-│   └── components.css      # Navbar, cards, botões, footer, toast
+│   ├── reset.css           # Normalização cross-browser
+│   ├── style.css           # Tokens, layout, tipografia, tema dark/light
+│   └── components.css      # Navbar, cards, botões, filtros, formulário, footer
 ├── js/
-│   └── script.js           # Menu mobile, reveal on scroll, feedback visual
+│   ├── i18n.js             # Dicionário PT/EN e helper de tradução
+│   ├── projects.js         # Base de dados dos projetos (array window.PROJECTS)
+│   └── script.js           # Todos os comportamentos interativos
 └── assets/
     ├── favicon.ico
-    └── images/             # Imagens SVG dos projetos
+    └── images/             # Foto de perfil (david.jpg) + SVGs de projetos
 ```
 
 ---
 
 ## Como rodar localmente
 
-O projeto é 100% estático — basta abrir o `index.html` no navegador. Para uma experiência mais próxima de produção (com caminhos absolutos, cache, etc.), use um servidor local:
-
-### Opção 1 — Python
-
+### Python
 ```bash
 python3 -m http.server 8080
+# Acesse http://localhost:8080
 ```
 
-Abra em: `http://localhost:8080`
-
-### Opção 2 — Node.js
-
+### Node.js
 ```bash
 npx serve .
 ```
 
-### Opção 3 — VS Code
-
-Use a extensão **Live Server** e clique em *Go Live*.
+### VS Code
+Extensão **Live Server** → *Go Live*.
 
 ---
 
 ## Deploy
 
-Por ser um site estático, o deploy é direto em qualquer um dos seguintes serviços:
+Site 100% estático, sem build step:
 
-- **GitHub Pages** — ative Pages no branch `main` / pasta `/`.
+- **GitHub Pages** — ative Pages no branch `main`.
 - **Netlify** — arraste a pasta no Netlify Drop.
 - **Vercel** — `vercel --prod`.
 - **Cloudflare Pages** — conecte o repositório.
 
-Não há build step — os arquivos já são o artefato final.
+---
+
+## Funcionalidades
+
+| Feature | Descrição |
+|---|---|
+| Tema dark/light | Toggle com persistência em `localStorage`, respeita `prefers-color-scheme` |
+| Idioma PT/EN | Toggle com `localStorage`, dicionário em `js/i18n.js` |
+| Filtros de projetos | Botões Todos / Profissionais / Pessoais nas subpáginas |
+| Renderização dinâmica | Projetos gerados a partir de `js/projects.js` |
+| Formulário de contato | Validação client-side + abertura de cliente de e-mail |
+| Reveal on scroll | IntersectionObserver com fallback |
+| Back to top | Botão flutuante visível após 400px de scroll |
+| Skip link | Link de acessibilidade para pular para o conteúdo |
+| Ticker animado | Barra de identidade fixa no topo |
+| SEO | Meta tags, Open Graph, `lang`, canonical, sitemap, robots.txt |
 
 ---
 
-## Padrões adotados
+## Adicionar um novo projeto
 
-- **Mobile-first** com breakpoint principal em 860px.
-- **BEM** simplificado para nomenclatura de classes (`.card__body`, `.navbar__link`).
-- **Variáveis CSS** para cores, espaçamentos, tipografia e transições — garantindo consistência.
-- **Acessibilidade** — landmarks (`header`, `main`, `footer`), `aria-*`, foco visível, `prefers-reduced-motion`.
-- **Performance** — fontes com `preconnect`, imagens SVG, `loading="lazy"` em imagens, JS com `defer`.
-- **SEO básico** — meta description, Open Graph, `theme-color`, `lang="pt-BR"`.
+1. Adicione o SVG em `assets/images/`.
+2. Inclua o objeto no array `window.PROJECTS` em `js/projects.js`.
+3. Se quiser página de detalhe, duplique `projeto.html` e atualize o conteúdo.
 
----
+## Adicionar uma nova categoria
 
-## Licença
-
-Uso pessoal. Livre para estudo.
+1. Crie `nova-categoria.html` baseado em `powerbi.html`.
+2. Adicione `nav.nova` no dicionário `js/i18n.js`.
+3. Adicione `<a class="navbar__link">` no menu das 4 páginas.
+4. Adicione `.cat-card` na seção Categorias de `index.html`.
+5. Adicione o `<li>` no footer das 4 páginas.

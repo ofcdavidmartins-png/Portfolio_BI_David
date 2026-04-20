@@ -1,258 +1,232 @@
-# DOC · Documentação Técnica do Portfólio
-
-Este documento descreve **tudo que foi feito** na reestruturação do projeto: arquitetura, arquivos, comentários do script, interações, ligações entre páginas e decisões de design.
+# DOC · Documentação Técnica — Portfólio David Martins
 
 ---
 
-## 1. Visão geral
-
-O projeto saiu de um único `index.html` monolítico para uma **estrutura modular multi-página**, organizada por responsabilidades e pronta para deploy.
+## 1. Arquitetura geral
 
 ```
 Portfolio-David/
-├── index.html        # Home — hero, categorias, últimos, melhores, contato
-├── powerbi.html      # Projetos em Power BI (profissionais + pessoais)
-├── python.html       # Projetos em Python (profissionais + pessoais)
-├── outros.html       # Projetos diversos (profissionais + pessoais)
+├── index.html        # Home — hero, sobre, stack, categorias, projetos, contato
+├── powerbi.html      # Power BI com filtros dinâmicos
+├── python.html       # Python com filtros dinâmicos
+├── outros.html       # Outros com filtros dinâmicos
+├── projeto.html      # Template de página de detalhe (case study)
+├── sitemap.xml       # SEO
+├── robots.txt        # SEO
 ├── css/
-│   ├── reset.css     # Normalização entre browsers
-│   ├── style.css     # Layout geral, tipografia, tokens
-│   └── components.css# Navbar, cards, botões, footer, toast, reveal
+│   ├── reset.css     # Normalização cross-browser
+│   ├── style.css     # Tokens CSS, tema dark/light, tipografia, hero, about, stack, ticker
+│   └── components.css# Navbar, botões, cards, filtros, formulário, footer, toast, reveal
 ├── js/
-│   └── script.js     # Comportamentos interativos
-├── assets/
-│   ├── favicon.ico
-│   └── images/       # Imagens SVG dos projetos
-├── README.md
-└── DOC.md
+│   ├── i18n.js       # Dicionário PT/EN e funções window.t, window.setLang, window.applyI18n
+│   ├── projects.js   # Array window.PROJECTS com todos os projetos
+│   └── script.js     # Todos os comportamentos (12 módulos comentados)
+└── assets/
+    ├── favicon.ico
+    └── images/       # david.jpg + SVGs por categoria (pbi-*, py-*, out-*, project-*)
 ```
 
 ---
 
-## 2. Arquivos HTML
+## 2. Paleta de cores (design system)
 
-Todas as páginas compartilham a mesma **shell**:
-
-1. `<head>` com:
-   - `meta charset`, `meta viewport`.
-   - Título e description únicos por página.
-   - Favicon em `assets/favicon.ico`.
-   - Preconnect + import das fontes do Google.
-   - Três links de CSS na ordem `reset → style → components`.
-
-2. `<header class="navbar">` idêntico em todas as páginas.
-3. `<main>` com o conteúdo específico.
-4. `<footer class="footer">` idêntico em todas as páginas.
-5. `<div class="toast">` para mensagens de feedback.
-6. `<script src="js/script.js" defer>` ao final.
-
-### 2.1 `index.html` — Home
-- **Hero** com título fluido (`clamp`) e dois CTAs (`primary` e `ghost`).
-- **Categorias** — três cards (`.cat-card`) que linkam para as subpáginas.
-- **Últimos projetos** — grid de 3 cards com badge "Novo".
-- **Melhores projetos** — grid de 3 cards com badge "Top".
-- **Contato** — bloco com CTA de e-mail.
-
-### 2.2 `powerbi.html`, `python.html`, `outros.html`
-Cada subpágina possui:
-- `page-header` com categoria, título e descrição.
-- Seção **Projetos profissionais** (fundo padrão).
-- Seção **Projetos pessoais** (fundo alternado `section--alt`).
-- Grid de cards com imagem, título, descrição, tags e botão "Ver projeto".
-
-### 2.3 Ligações entre páginas
-| De | Para | Elemento |
-|---|---|---|
-| Todas | `index.html` | `.navbar__brand`, `.navbar__link "Início"`, `.footer` |
-| `index.html` | `powerbi.html` | Card de categoria, cards de destaque, links "Ver todos" |
-| `index.html` | `python.html` | Card de categoria, cards de destaque |
-| `index.html` | `outros.html` | Card de categoria, cards de destaque |
-| Subpáginas | `index.html#contato` | `.navbar__link "Contato"` |
+| Nome          | Hex       | Uso no CSS               |
+|---------------|-----------|--------------------------|
+| Carvão        | `#1A1814` | `--bg-deep` (dark)       |
+| Fuligem       | `#2C2720` | `--bg-main` (dark)       |
+| Terra queimada| `#3D352C` | `--bg-surface`, `--bg-card` (dark) |
+| Barro escuro  | `#524840` | `--divider`              |
+| Sombra        | `#6B6259` | `--text-faint`           |
+| Pedra         | `#9C9085` | `--text-muted`           |
+| Cinza areia   | `#C4BAB0` | ícones, tags             |
+| Linho         | `#D9D2C5` | `--text-secondary`       |
+| Areia clara   | `#E8E0D0` | badges/chips             |
+| Pergaminho    | `#F0EBE0` | `--bg-surface` (light)   |
+| Bege quente   | `#F5F0E8` | `--text-primary`, `--bg-main` (light) |
+| Creme         | `#FAF8F4` | `--bg-deep`, `--bg-card` (light) |
+| Barro         | `#8C7B68` | `--accent-dim`           |
+| Caramelo      | `#A8967F` | `--accent` (dark)        |
+| Mogno         | `#6B5C4E` | `--accent` (light), `--accent-deep` |
 
 ---
 
-## 3. CSS
+## 3. Tema dark/light
 
-### 3.1 `reset.css`
-Normalização: `box-sizing: border-box`, remoção de margens/paddings, imagens `display: block`, foco visível (`:focus-visible`).
-
-### 3.2 `style.css`
-- **Tokens CSS** (`:root`): cores, bordas, textos, tipografia fluida, espaçamentos, transições.
-- **Tipografia fluida** com `clamp()` para `--fs-hero`, `--fs-section`, `--fs-body`.
-- **Background** com dois radial-gradients sutis.
-- **Container** com `max-width: 1320px` e padding lateral responsivo.
-- **Hero, Section, Page-header, Grid** com regras de layout.
-- **Media queries** em 768px e `prefers-reduced-motion`.
-
-### 3.3 `components.css`
-- **Navbar** fixa com blur, classe `.is-scrolled` aplicada via JS após 32px de scroll, menu mobile (`.navbar__toggle` + `.navbar__menu.is-open`).
-- **Botões** (`.btn`, `.btn--primary`, `.btn--ghost`, `.btn--sm`) com seta animada `.btn__arrow`.
-- **Cards de projeto** com hover elevado, badge, tags, footer com link.
-- **Category cards** para a home.
-- **Footer** em grid com 3 colunas + bottom-bar com copyright.
-- **Toast** fixo bottom-center para feedback.
-- **`.reveal`** — classe de animação de entrada ativada por IntersectionObserver.
-
-### 3.4 Nomenclatura
-Adotado **BEM simplificado**: `bloco`, `bloco__elemento`, `bloco--modificador`.
+- Variáveis CSS redefinidas sob `[data-theme="light"]` em `style.css`.
+- JS lê `localStorage('portfolio:theme')` e `prefers-color-scheme` na inicialização.
+- `applyTheme(t)` adiciona/remove `data-theme="light"` no `<html>`.
+- Ícone do botão: ☼ (escuro) / ☾ (claro).
 
 ---
 
-## 4. JavaScript (`js/script.js`)
+## 4. i18n PT/EN
 
-O script é autoexecutável (IIFE) e está dividido em blocos comentados:
+**`js/i18n.js`**
+- `window.I18N = { pt: {...}, en: {...} }` — dicionário completo.
+- `window.t(key)` — retorna a tradução do idioma atual.
+- `window.applyI18n()` — percorre `[data-i18n]` e `[data-i18n-placeholder]` e atualiza `textContent`/`placeholder`.
+- `window.setLang(lang)` — persiste no `localStorage('portfolio:lang')` e chama `applyI18n`.
+- `window.getLang()` — retorna idioma atual (`'pt'` padrão).
 
+---
+
+## 5. Projetos dinâmicos
+
+**`js/projects.js`**
+
+Cada entrada:
 ```js
-(() => {
-  'use strict';
-
-  // Utilitários de seleção
-  const $  = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-
-  // 1. Menu responsivo
-  // Alterna a classe .is-open no menu e no botão hamburguer.
-  // Trava o scroll do body enquanto o menu mobile está aberto.
-  // Fecha automaticamente ao clicar em qualquer link interno.
-
-  // 2. Navbar scroll state
-  // Adiciona a classe .is-scrolled quando window.scrollY > 32,
-  // engatilhando maior contraste e sombra na navbar.
-
-  // 3. Link ativo por página
-  // Lê location.pathname e marca o <a> correspondente com .is-active.
-
-  // 4. Reveal on scroll
-  // IntersectionObserver observa elementos .reveal e, ao entrarem no viewport,
-  // adiciona .is-visible — disparando a animação definida em components.css.
-  // Inclui fallback: sem IO, aplica .is-visible imediatamente.
-
-  // 5. Toast de feedback
-  // Qualquer elemento com [data-feedback="mensagem"] dispara showToast()
-  // no clique. O toast aparece por 2.4s e recolhe automaticamente.
-
-  // 6. Ano dinâmico
-  // Preenche #currentYear no footer com o ano corrente.
-
-  // 7. Smooth scroll de âncoras
-  // Captura cliques em <a href="#id"> e desliza até o alvo via scrollIntoView.
-})();
+{
+  id: 'slug-unico',
+  title: 'Título do projeto',
+  desc: 'Descrição curta.',
+  img: 'assets/images/img.svg',
+  category: 'powerbi' | 'python' | 'outros',
+  kind: 'profissional' | 'pessoal',
+  tags: ['tag1', 'tag2'],
+  year: 2026,
+  novo: true,       // aparece na home "Últimos projetos"
+  featured: true,   // aparece na home "Melhores projetos"
+  href: 'projeto.html' | '#'
+}
 ```
 
-### 4.1 Interações observáveis pelo usuário
-| Gatilho | Resultado |
-|---|---|
-| Scroll da página | Navbar ganha fundo mais sólido e sombra. |
-| Scroll até uma seção `.reveal` | Conteúdo aparece com fade + slide up. |
-| Clique no hamburguer (≤860px) | Menu mobile desce e trava o scroll. |
-| Clique em link do menu mobile | Menu fecha e navega para a página. |
-| Clique em `[data-feedback]` | Toast aparece 2.4s com a mensagem. |
-| Clique em link `#ancora` | Scroll suave até o destino. |
-| Tab / foco | Outline visível (acessibilidade). |
-
-### 4.2 Gatilhos no HTML
-- `data-feedback="..."` em cards e CTAs — reutilizável sem tocar no JS.
-- `id="currentYear"` no footer — preenchido automaticamente.
-- `aria-expanded` no botão hamburguer — atualizado via JS para acessibilidade.
+**`js/script.js` — renderProjects()**
+- `[data-render="latest"]` → filtra `p.novo`, pega 3 primeiros → home.
+- `[data-render="best"]` → filtra `p.featured`, pega 3 primeiros → home.
+- `[data-render-category="powerbi"]` → filtra por categoria → subpágina.
+- `mount.dataset.filter` → `'all'` | `'profissional'` | `'pessoal'` → filtro ativo.
 
 ---
 
-## 5. Assets
+## 6. Filtros nas subpáginas
 
-### 5.1 Favicon
-`assets/favicon.ico` — já existente no repositório, movido da raiz para dentro de `assets/`.
+```html
+<div class="filters" data-target="#pbi-mount">
+  <button class="filter is-active" data-filter="all">Todos</button>
+  <button class="filter" data-filter="profissional">Profissionais</button>
+  <button class="filter" data-filter="pessoal">Pessoais</button>
+</div>
+<div class="grid" id="pbi-mount" data-render-category="powerbi" data-filter="all"></div>
+```
 
-### 5.2 Imagens dos projetos
-Todas as imagens são **SVGs gerados proceduralmente**, com:
-- Gradiente diagonal em paleta consistente com o tema (terrosos/amber).
-- Padrão de hachuras diagonais sutis.
-- Linha de série temporal (polyline).
-- Barras verticais simulando um gráfico de colunas.
-- Títulos estilizados por projeto.
-
-Benefícios: leves (<2 KB cada), escaláveis, sem dependências externas.
+- Clique no `.filter` → JS atualiza `.is-active`, seta `mount.dataset.filter`, chama `renderProjects()`.
+- `data-target` aponta para o CSS selector do mount com `#`.
 
 ---
 
-## 6. SEO & Acessibilidade
+## 7. Formulário de contato
 
-- `lang="pt-BR"` na raiz.
-- Meta `description`, `keywords`, `author`, `theme-color` em cada página.
+- Validação client-side: nome não vazio, e-mail com regex, mensagem ≥ 10 chars.
+- Mensagens de erro em `[data-error="campo"]` dentro do `<form>`.
+- Submissão: monta `mailto:` com subject e body codificados → `window.location.href`.
+- Toast de confirmação via `window.showToast()`.
+
+---
+
+## 8. Comportamentos do script.js (12 módulos)
+
+| # | Módulo | Descrição |
+|---|--------|-----------|
+| 1 | Menu responsivo | Toggle mobile, fecha ao clicar em link, trava scroll do body |
+| 2 | Navbar scroll | Adiciona `.is-scrolled` após 32px |
+| 3 | Link ativo | Lê `location.pathname` e marca `.is-active` |
+| 4 | Reveal on scroll | IntersectionObserver, fallback sem IO |
+| 5 | Toast | `window.showToast(msg)`, 2.8s, `[data-feedback]` |
+| 6 | Ano dinâmico | `#currentYear` → `new Date().getFullYear()` |
+| 7 | Smooth scroll | `a[href^="#"]` → `scrollIntoView` |
+| 8 | Theme toggle | dark/light com localStorage + prefers-color-scheme |
+| 9 | Lang toggle | PT/EN com i18n.js |
+| 10 | Render projetos | `cardHTML()` → grid home e subpáginas |
+| 11 | Filtros | `.filter` click → `dataset.filter` → `renderProjects()` |
+| 12 | Formulário | Validação + mailto |
+| + | Back to top | `.back-to-top` visível após 400px scroll |
+
+---
+
+## 9. Acessibilidade
+
+- Skip link (`<a class="skip-link" href="#main">`) — visível no foco.
+- Landmarks: `<header>`, `<nav>`, `<main id="main">`, `<footer>`.
+- `aria-label` em navbar brand, toggle, nav, filtros, back-to-top.
+- `aria-expanded` no hamburguer, atualizado via JS.
+- `role="status" aria-live="polite"` no toast.
+- `:focus-visible` com outline visível (reset.css).
+- `prefers-reduced-motion` desabilita animações e ticker.
+
+---
+
+## 10. SEO
+
+- `<title>` único por página.
+- `<meta name="description">` por página.
+- `<meta name="theme-color">`.
 - Open Graph em `index.html`.
-- Estrutura com landmarks (`<header>`, `<main>`, `<footer>`, `<nav>`).
-- Títulos hierárquicos (`h1` → `h2` → `h3`).
-- `aria-label` no brand, toggle e regiões de navegação.
-- `role="status"` + `aria-live="polite"` no toast.
-- Foco visível via `:focus-visible`.
-- Suporte a `prefers-reduced-motion`.
+- `<link rel="canonical">` em todas as páginas.
+- `lang` no `<html>` atualizado pelo i18n.js.
+- `sitemap.xml` e `robots.txt`.
+- `loading="lazy"` em imagens, `width`/`height` explícitos nos cards.
 
 ---
 
-## 7. Performance
+## 11. Performance
 
-- Fontes com `preconnect` e `display=swap`.
-- `loading="lazy"` em todas as imagens do grid.
-- `script` com `defer` — não bloqueia o parse do HTML.
-- CSS crítico dividido em três arquivos pequenos (reset / layout / componentes).
-- SVGs no lugar de PNG/JPG.
-- Zero dependências de JS.
-
----
-
-## 8. Escalabilidade
-
-Para adicionar um novo projeto:
-
-1. Crie o SVG em `assets/images/`.
-2. Copie um `<article class="card">` existente na subpágina adequada.
-3. Ajuste `src`, `alt`, `card__category`, `card__title`, `card__desc`, `card__tags` e `data-feedback`.
-
-Para adicionar uma **nova categoria**:
-
-1. Crie `nova-categoria.html` reutilizando o shell das existentes.
-2. Adicione um `<a class="navbar__link">` no menu das 4 páginas.
-3. Adicione uma `.cat-card` nova na seção **Categorias** de `index.html`.
-4. Adicione um `<li>` no `footer__list` das 4 páginas.
+- Fontes com `preconnect` + `display=swap`.
+- `<script defer>` em todos os scripts.
+- SVGs leves como imagens de projeto.
+- CSS dividido em 3 arquivos coesos, sem CSS-in-JS.
+- `will-change: transform` apenas no ticker.
+- `{ passive: true }` nos event listeners de scroll.
 
 ---
 
-## 9. Revisão crítica — pontos de atenção e melhorias
+## 12. Página de detalhe (`projeto.html`)
 
-### Pontos falhos / de atenção
-- **Navegação em subpáginas** repete marcação (navbar/footer). Em produção, um template engine (Eleventy, Astro, PHP includes) evitaria duplicação.
-- **Os botões "Ver projeto"** nos cards ainda apontam para `#` — precisam de URLs reais quando as páginas de detalhe forem criadas.
-- **Imagens de projeto** são ilustrativas. Substituir por screenshots reais aumenta credibilidade.
-- **Formulário de contato** não foi implementado — hoje o contato é só por e-mail direto.
-- **Dark/light theme** não tem toggle; o tema é exclusivamente escuro.
+Template com:
+- Breadcrumb navegável.
+- Hero com título, descrição, tabela de metadados (stack, tipo, ano, status).
+- Imagem de capa `16:7`.
+- Grid 2 colunas: conteúdo (contexto, feito, aprendizados, próximos passos) + sidebar sticky (tags, links, botão voltar).
+- Navegação entre projetos (anterior / próximo).
 
-### Melhorias sugeridas (roadmap)
-1. **Páginas de detalhe** (`powerbi/projeto-slug.html`) com case study completo.
-2. **JSON de projetos** + renderização dinâmica via `fetch` — elimina repetição de HTML.
-3. **Formulário de contato** com Formspree / Netlify Forms.
-4. **Modo claro** alternável + preferência salva em `localStorage`.
-5. **Sitemap.xml** e **robots.txt** para SEO.
-6. **Testes de Lighthouse** no CI e `.github/workflows/pages.yml` para auto-deploy.
-7. **i18n** (PT/EN) — já que a stack é usada internacionalmente.
-8. **Filtros** nas subpáginas (por tag/tecnologia).
-
-### Pontos fortes
-- Estrutura limpa e escalável.
-- CSS modular, tokenizado, com BEM.
-- JS leve e autoexplicativo, sem dependências.
-- Acessibilidade e performance pensadas desde o início.
-- Design consistente entre todas as páginas.
-- Pronto para deploy estático imediato.
+Para criar nova página de detalhe: duplicar `projeto.html` e atualizar conteúdo + `href` no objeto em `projects.js`.
 
 ---
 
-## 10. Changelog da reestruturação
+## 13. Changelog completo
 
-| Ação | Detalhe |
-|---|---|
-| Criado | `css/reset.css`, `css/style.css`, `css/components.css` |
-| Criado | `js/script.js` |
-| Reescrito | `index.html` (home com hero, categorias, últimos, melhores, contato) |
-| Criado | `powerbi.html`, `python.html`, `outros.html` |
-| Movido | `favicon.ico` → `assets/favicon.ico` |
-| Criado | `assets/images/*.svg` (placeholders procedurais) |
-| Criado | `README.md`, `DOC.md` |
+| Versão | O que mudou |
+|--------|-------------|
+| v1 | Estrutura multi-página criada do zero a partir do `index.html` monolítico |
+| v2 | Paleta da referência aplicada; foto de perfil restaurada; identidade preservada |
+| v2 | Tema dark/light com localStorage; toggle PT/EN; formulário de contato |
+| v2 | Projetos dinâmicos (JSON → DOM); filtros nas subpáginas |
+| v2 | Ticker, timeline, stack bar, profile card — identidade original mantida |
+| v3 | Bugs corrigidos: cardHTML feedback, window.t guard, hero__left/right CSS |
+| v3 | Skip link, back-to-top adicionados em todas as páginas |
+| v3 | light-theme section--alt e profile-photo overlay corrigidos |
+| v3 | sitemap.xml, robots.txt, página de detalhe (`projeto.html`) |
+| v3 | README e DOC atualizados |
+
+---
+
+## 14. Análise crítica (pontos de atenção e roadmap)
+
+### Pontos resolvidos nesta versão
+- ✅ Identidade visual original preservada (foto, textos, ticker, timeline)
+- ✅ Paleta do design system aplicada em todos os arquivos
+- ✅ Tema dark/light funcional
+- ✅ i18n PT/EN funcional
+- ✅ Filtros de projetos nas subpáginas
+- ✅ Formulário de contato validado
+- ✅ Back to top e skip link
+- ✅ sitemap + robots.txt
+- ✅ Página de detalhe template
+
+### Pontos pendentes para próximas versões
+1. **Links reais** — botões "Ver projeto" ainda apontam para `#` nos projetos sem detalhe; criar páginas de detalhe para cada projeto.
+2. **Imagens reais** — substituir SVGs procedurais por screenshots dos dashboards reais.
+3. **CI/CD** — GitHub Actions para deploy automático no GitHub Pages (`pages.yml`).
+4. **Filtro por tag** — além de profissional/pessoal, filtrar por tecnologia (DAX, Python etc.).
+5. **Open Graph por projeto** — meta imagem específica em cada página de detalhe.
+6. **Analytics** — Plausible ou Umami (sem cookies) para medir tráfego.

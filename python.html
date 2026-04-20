@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python · Projetos · David Martins</title>
   <meta name="description" content="Projetos em Python de David Martins — automações, ETL, análise exploratória e modelos preditivos." />
+  <meta name="theme-color" content="#1A1814" />
+  <link rel="canonical" href="./python.html" />
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,29 +18,47 @@
   <link rel="stylesheet" href="css/components.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__label">David Martins</div>
+    <div class="ticker__scroll">
+      <div class="ticker__track">
+        <span class="ticker__item">Python · Pandas · SQL</span>
+        <span class="ticker__item">Automação de processos</span>
+        <span class="ticker__item">ETL e análise exploratória</span>
+        <span class="ticker__item">Brasília, DF</span>
+        <span class="ticker__item">Python · Pandas · SQL</span>
+        <span class="ticker__item">Automação de processos</span>
+        <span class="ticker__item">ETL e análise exploratória</span>
+        <span class="ticker__item">Brasília, DF</span>
+      </div>
+    </div>
+  </div>
+
   <header class="navbar" role="banner">
     <div class="container navbar__inner">
-      <a href="index.html" class="navbar__brand" aria-label="David Martins - Início">
-        David<span>.</span>Martins
-      </a>
-      <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="index.html" class="navbar__brand"><span class="dot"></span> David Martins</a>
+      <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu"><span></span><span></span><span></span></button>
       <nav class="navbar__menu" id="primary-menu" aria-label="Principal">
-        <a class="navbar__link" href="index.html">Início</a>
-        <a class="navbar__link" href="powerbi.html">Power BI</a>
-        <a class="navbar__link" href="python.html">Python</a>
-        <a class="navbar__link" href="outros.html">Outros</a>
-        <a class="navbar__link" href="index.html#contato">Contato</a>
+        <a class="navbar__link" href="index.html"><span class="num">01</span><span data-i18n="nav.home">Início</span></a>
+        <a class="navbar__link" href="powerbi.html"><span class="num">02</span><span data-i18n="nav.powerbi">Power BI</span></a>
+        <a class="navbar__link" href="python.html"><span class="num">03</span><span data-i18n="nav.python">Python</span></a>
+        <a class="navbar__link" href="outros.html"><span class="num">04</span><span data-i18n="nav.outros">Outros</span></a>
+        <a class="navbar__link" href="index.html#contato"><span class="num">05</span><span data-i18n="nav.contact">Contato</span></a>
       </nav>
+      <div class="navbar__actions">
+        <button id="lang-toggle" class="icon-btn" type="button">EN</button>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Mudar tema"><span id="theme-icon">☼</span></button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="page-header">
       <div class="container reveal">
-        <p class="page-header__category">Categoria</p>
-        <h1 class="page-header__title">Python</h1>
+        <p class="page-header__category" data-i18n="nav.python">Python</p>
+        <h1 class="page-header__title">Py<em>thon</em></h1>
         <p class="page-header__desc">
           Automações de processos, pipelines de ETL, análise exploratória e modelos
           preditivos focados em eficiência operacional.
@@ -46,124 +66,23 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="py-prof-title">
+    <section class="section" aria-labelledby="py-title">
       <div class="container">
         <div class="section__head reveal">
           <div>
-            <span class="eyebrow">Trabalho</span>
-            <h2 id="py-prof-title" class="section-title">Projetos profissionais</h2>
-            <p>Automações e análises entregues em ambiente corporativo.</p>
+            <div class="section__num"><span class="big">01</span><span class="label">Projetos</span></div>
+            <h2 id="py-title" class="section-title">Todos os projetos em <em>Python</em></h2>
+            <p>Alterne entre projetos profissionais e estudos pessoais usando o filtro.</p>
           </div>
         </div>
 
-        <div class="grid reveal">
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/py-1.svg" alt="Automação de relatórios" loading="lazy" />
-              <span class="card__badge">Destaque</span>
-            </div>
-            <div class="card__body">
-              <span class="card__category">Python · Profissional</span>
-              <h3 class="card__title">Automação de Relatórios</h3>
-              <p class="card__desc">Consolida planilhas, aplica regras de negócio e distribui PDFs por e-mail.</p>
-              <div class="card__tags">
-                <span class="card__tag">Pandas</span>
-                <span class="card__tag">OpenPyXL</span>
-                <span class="card__tag">SMTP</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/py-2.svg" alt="ETL corporativo" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Python · Profissional</span>
-              <h3 class="card__title">Pipeline de ETL</h3>
-              <p class="card__desc">Ingestão, transformação e carga em data warehouse com agendamento.</p>
-              <div class="card__tags">
-                <span class="card__tag">Pandas</span>
-                <span class="card__tag">SQLAlchemy</span>
-                <span class="card__tag">Cron</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/py-3.svg" alt="Modelo preditivo" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Python · Profissional</span>
-              <h3 class="card__title">Previsão de Demanda</h3>
-              <p class="card__desc">Modelo de séries temporais para planejamento de compras mensais.</p>
-              <div class="card__tags">
-                <span class="card__tag">Prophet</span>
-                <span class="card__tag">Scikit-learn</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" aria-labelledby="py-pessoal-title">
-      <div class="container">
-        <div class="section__head reveal">
-          <div>
-            <span class="eyebrow">Estudos</span>
-            <h2 id="py-pessoal-title" class="section-title">Projetos pessoais</h2>
-            <p>Scripts e estudos abertos focados em produtividade e aprendizado.</p>
-          </div>
+        <div class="filters" data-target="#py-mount" role="group" aria-label="Filtros de projeto">
+          <button class="filter is-active" data-filter="all" data-i18n="filters.all">Todos</button>
+          <button class="filter" data-filter="profissional" data-i18n="filters.profissional">Profissionais</button>
+          <button class="filter" data-filter="pessoal" data-i18n="filters.pessoal">Pessoais</button>
         </div>
 
-        <div class="grid reveal">
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/py-4.svg" alt="Bot de Telegram" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Python · Pessoal</span>
-              <h3 class="card__title">Bot de Lembretes</h3>
-              <p class="card__desc">Bot no Telegram que envia lembretes e resumos diários de tarefas.</p>
-              <div class="card__tags">
-                <span class="card__tag">python-telegram-bot</span>
-                <span class="card__tag">APScheduler</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/py-5.svg" alt="Análise exploratória" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Python · Pessoal</span>
-              <h3 class="card__title">EDA · Dados Públicos</h3>
-              <p class="card__desc">Análise exploratória e visualização de bases abertas do governo.</p>
-              <div class="card__tags">
-                <span class="card__tag">Pandas</span>
-                <span class="card__tag">Matplotlib</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-        </div>
+        <div class="grid" id="py-mount" data-render-category="python" data-filter="all"></div>
       </div>
     </section>
   </main>
@@ -172,36 +91,39 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <p class="footer__title">David<span style="color:var(--accent)">.</span>Martins</p>
-          <p>Análise de dados e automação de processos.<br />Brasília, DF.</p>
+          <p class="footer__title">David Martins</p>
+          <p>Otimização e automação de processos.<br />Brasília, DF.</p>
         </div>
         <div class="footer__col">
           <h4>Navegação</h4>
           <ul class="footer__list">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="powerbi.html">Power BI</a></li>
-            <li><a href="python.html">Python</a></li>
-            <li><a href="outros.html">Outros</a></li>
+            <li><a href="index.html" data-i18n="nav.home">Início</a></li>
+            <li><a href="powerbi.html" data-i18n="nav.powerbi">Power BI</a></li>
+            <li><a href="python.html" data-i18n="nav.python">Python</a></li>
+            <li><a href="outros.html" data-i18n="nav.outros">Outros</a></li>
           </ul>
         </div>
         <div class="footer__col">
           <h4>Contato</h4>
           <ul class="footer__list">
-            <li><a href="mailto:contato@davidmartins.dev">contato@davidmartins.dev</a></li>
-            <li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/" rel="noopener" target="_blank">GitHub</a></li>
+            <li><a href="mailto:ofcdavidmartins@gmail.com">ofcdavidmartins@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/daviddmartins/" rel="noopener" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/ofcdavidmartins-png" rel="noopener" target="_blank">GitHub</a></li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© <span id="currentYear"></span> David Martins. Todos os direitos reservados.</span>
-        <span>Feito com HTML, CSS e JS.</span>
+        <span>© <span id="currentYear"></span> David Martins. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
+        <span data-i18n="footer.made">Feito com HTML, CSS e JS.</span>
       </div>
     </div>
   </footer>
 
+  <button class="back-to-top" aria-label="Voltar ao topo">↑</button>
   <div class="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/i18n.js" defer></script>
+  <script src="js/projects.js" defer></script>
   <script src="js/script.js" defer></script>
 </body>
 </html>

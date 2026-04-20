@@ -3,316 +3,425 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Martins · Portfólio de Análise de Dados & Automação</title>
+  <title>David Martins · Análise de Dados & Automação de Processos</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Portfólio de David Martins — projetos de análise de dados, automação de processos e visualização em Power BI, Python e outras stacks." />
+  <meta name="description" content="David Martins. Otimização e automação de processos na FUNCEF. Portfólio de análise de dados com Power BI, DAX, SQL e Python. Brasília, DF." />
   <meta name="author" content="David Martins" />
-  <meta name="keywords" content="portfólio, análise de dados, power bi, python, automação, david martins" />
-  <meta name="theme-color" content="#14110D" />
+  <meta name="keywords" content="portfólio, análise de dados, power bi, python, automação, dax, sql, david martins, brasília" />
+  <meta name="theme-color" content="#1A1814" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="David Martins · Portfólio" />
-  <meta property="og:description" content="Projetos de análise de dados, automação e visualização em Power BI, Python e mais." />
+  <meta property="og:description" content="Otimização e automação de processos. Análise de dados em Power BI, DAX, SQL e Python." />
   <meta property="og:image" content="assets/images/og-cover.svg" />
+  <meta property="og:locale" content="pt_BR" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="canonical" href="./index.html" />
 
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
-  <!-- CSS -->
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
 </head>
 <body>
-  <!-- ========== NAVBAR ========== -->
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <!-- TICKER (identidade visual do projeto original) -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__label">David Martins</div>
+    <div class="ticker__scroll">
+      <div class="ticker__track">
+        <span class="ticker__item">Analista de processos</span>
+        <span class="ticker__item">Trabalhando na FUNCEF</span>
+        <span class="ticker__item">Power BI · DAX · SQL</span>
+        <span class="ticker__item">Excel avançado · Python</span>
+        <span class="ticker__item">Brasília, DF</span>
+        <span class="ticker__item">Migrando para dados</span>
+        <span class="ticker__item">Analista de processos</span>
+        <span class="ticker__item">Trabalhando na FUNCEF</span>
+        <span class="ticker__item">Power BI · DAX · SQL</span>
+        <span class="ticker__item">Excel avançado · Python</span>
+        <span class="ticker__item">Brasília, DF</span>
+        <span class="ticker__item">Migrando para dados</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
   <header class="navbar" role="banner">
     <div class="container navbar__inner">
       <a href="index.html" class="navbar__brand" aria-label="David Martins - Início">
-        David<span>.</span>Martins
+        <span class="dot"></span> David Martins
       </a>
-
       <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
         <span></span><span></span><span></span>
       </button>
-
       <nav class="navbar__menu" id="primary-menu" aria-label="Principal">
-        <a class="navbar__link" href="index.html">Início</a>
-        <a class="navbar__link" href="powerbi.html">Power BI</a>
-        <a class="navbar__link" href="python.html">Python</a>
-        <a class="navbar__link" href="outros.html">Outros</a>
-        <a class="navbar__link" href="#contato">Contato</a>
+        <a class="navbar__link" href="index.html"><span class="num">01</span><span data-i18n="nav.home">Início</span></a>
+        <a class="navbar__link" href="powerbi.html"><span class="num">02</span><span data-i18n="nav.powerbi">Power BI</span></a>
+        <a class="navbar__link" href="python.html"><span class="num">03</span><span data-i18n="nav.python">Python</span></a>
+        <a class="navbar__link" href="outros.html"><span class="num">04</span><span data-i18n="nav.outros">Outros</span></a>
+        <a class="navbar__link" href="#contato"><span class="num">05</span><span data-i18n="nav.contact">Contato</span></a>
       </nav>
+      <div class="navbar__actions">
+        <button id="lang-toggle" class="icon-btn" type="button" aria-label="Switch to English">EN</button>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Mudar para tema claro">
+          <span id="theme-icon">☼</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <!-- ========== HERO ========== -->
+    <!-- HERO -->
     <section class="hero">
-      <div class="container hero__inner reveal">
-        <span class="eyebrow">Portfólio · Brasília / DF</span>
-        <h1 class="hero__title">
-          Análise de dados e <em>automação</em> que transformam decisões em resultados.
-        </h1>
-        <p class="hero__lead">
-          Sou David Martins. Construo dashboards, automações e modelos analíticos para
-          tornar processos mais rápidos, claros e orientados a dados.
-        </p>
-        <div class="hero__cta">
-          <a href="#projetos" class="btn btn--primary">
-            Ver projetos <span class="btn__arrow">→</span>
-          </a>
-          <a href="#contato" class="btn btn--ghost">Entrar em contato</a>
+      <div class="container hero__grid">
+        <div class="hero__left reveal">
+          <div class="hero__kicker" data-i18n="hero.kicker">Dados e processos</div>
+          <h1 class="hero__title">
+            David
+            <span class="last">Martins.</span>
+          </h1>
+          <p class="hero__lead" data-i18n="hero.lead">
+            Trabalho com otimização e automação de processos na <strong>FUNCEF</strong>.
+            Estou migrando para a área de dados. Aqui registro o que vou estudando e os projetos que termino.
+          </p>
+          <div class="hero__tags">
+            <span class="hero__tag">Power BI</span>
+            <span class="hero__tag">Excel</span>
+            <span class="hero__tag">Automação</span>
+            <span class="hero__tag">DAX</span>
+            <span class="hero__tag">SQL</span>
+            <span class="hero__tag">Python</span>
+          </div>
+          <div class="hero__cta">
+            <a href="#projetos" class="btn btn--primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+              </svg>
+              <span data-i18n="hero.cta.see">Ver projetos</span>
+            </a>
+            <a href="#contato" class="btn btn--ghost" data-i18n="hero.cta.reach">Entrar em contato</a>
+          </div>
+        </div>
+
+        <div class="hero__right reveal">
+          <div class="profile-card">
+            <div class="profile-photo">
+              <span class="photo-badge"><span data-i18n="photo.badge">Brasília</span></span>
+              <img src="assets/images/david.jpg" alt="Foto de David Martins" loading="eager" />
+            </div>
+            <div class="id-card">
+              <div class="id-row">
+                <div class="id-label" data-i18n="id.work">Trabalho</div>
+                <div class="id-value">
+                  <span data-i18n="id.work.val">FUNCEF</span>
+                  <span class="sub" data-i18n="id.work.sub">Otimização e automação</span>
+                </div>
+              </div>
+              <div class="id-row">
+                <div class="id-label" data-i18n="id.study">Formação</div>
+                <div class="id-value">
+                  <span data-i18n="id.study.val">Administração</span>
+                  <span class="sub" data-i18n="id.study.sub">5º período</span>
+                </div>
+              </div>
+              <div class="id-row">
+                <div class="id-label" data-i18n="id.city">Cidade</div>
+                <div class="id-value">
+                  <span data-i18n="id.city.val">Brasília</span>
+                  <span class="sub" data-i18n="id.city.sub">DF</span>
+                </div>
+              </div>
+              <div class="id-row">
+                <div class="id-label" data-i18n="id.focus">Foco</div>
+                <div class="id-value" data-i18n="id.focus.val">Dados, processos e automação</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <hr class="divider" />
-
-    <!-- ========== CATEGORIAS ========== -->
-    <section class="section" aria-labelledby="categorias-title">
+    <!-- SOBRE -->
+    <section class="section" id="sobre" aria-labelledby="sobre-title">
       <div class="container">
         <div class="section__head reveal">
           <div>
-            <span class="eyebrow">Categorias</span>
-            <h2 id="categorias-title" class="section-title">Explore por stack</h2>
-            <p>Selecione uma categoria para ver os projetos profissionais e pessoais desenvolvidos.</p>
+            <div class="section__num">
+              <span class="big">01</span>
+              <span class="label" data-i18n="about.kicker">Como cheguei aqui</span>
+            </div>
+            <h2 id="sobre-title" class="section-title">
+              <span data-i18n="about.title">Dos processos aos</span> <em data-i18n="about.title.em">dados</em>.
+            </h2>
+            <p data-i18n="about.desc">Um resumo de onde venho e o que estou fazendo agora.</p>
+          </div>
+        </div>
+
+        <div class="about reveal">
+          <div class="about__text">
+            <p>Entrei na <strong>FUNCEF</strong> como estagiário em <strong>Treinamento e Desenvolvimento</strong>. Depois passei por <strong>Folha de Pagamento e Benefícios</strong>, virei <strong>Assistente de RH</strong> e hoje trabalho com otimização e automação de processos.</p>
+            <p>O que mais aprendi nesse caminho é que boa parte da dor operacional vem de processo mal desenhado e dado espalhado em planilha. Foi isso que me aproximou de <strong>Excel</strong> e <strong>Power BI</strong>. Hoje uso os dois todo dia.</p>
+            <p>Agora estudo <strong>DAX</strong>, <strong>SQL</strong> e modelagem de dados para fechar a transição para a área. Os projetos que vou terminando aparecem aqui.</p>
+          </div>
+          <div class="timeline">
+            <div class="timeline__item">
+              <div class="timeline__when">2024</div>
+              <div class="timeline__what">Entrada na FUNCEF, em T&amp;D</div>
+              <div class="timeline__detail">Estágio em Treinamento e Desenvolvimento. Primeiro contato com Power BI e Excel aplicados a relatórios.</div>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__when">2024 a 2025</div>
+              <div class="timeline__what">Folha de Pagamento e Benefícios</div>
+              <div class="timeline__detail">Primeiro como estagiário, depois efetivado como Assistente de RH. Comecei a automatizar rotinas em Excel e montar relatórios em Power BI.</div>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__when">2026, agora</div>
+              <div class="timeline__what">FUNCEF · Otimização e automação</div>
+              <div class="timeline__detail">Mapear fluxo, achar gargalo, automatizar. É o que faço no trabalho hoje.</div>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__when">em curso</div>
+              <div class="timeline__what">Transição para dados</div>
+              <div class="timeline__detail">DAX, SQL e modelagem. Os projetos próprios começam a aparecer aqui.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="section section--alt" id="categorias" aria-labelledby="categorias-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <div class="section__num">
+              <span class="big">02</span>
+              <span class="label">Categorias</span>
+            </div>
+            <h2 id="categorias-title" class="section-title" data-i18n="cats.title">Explore por categoria</h2>
+            <p data-i18n="cats.desc">Selecione uma stack para ver os projetos profissionais e pessoais.</p>
           </div>
         </div>
 
         <div class="grid grid--3">
           <a href="powerbi.html" class="cat-card reveal">
             <div>
+              <div class="cat-card__num">01 · Power BI</div>
               <h3 class="cat-card__title">Power BI</h3>
-              <p class="cat-card__desc">Dashboards corporativos, modelagem em DAX e relatórios interativos.</p>
+              <p class="cat-card__desc">Dashboards corporativos, modelagem em DAX e relatórios executivos.</p>
             </div>
-            <span class="cat-card__arrow">Ver projetos →</span>
+            <span class="cat-card__arrow" data-i18n="seeAll">Ver todos</span>
           </a>
-
           <a href="python.html" class="cat-card reveal">
             <div>
+              <div class="cat-card__num">02 · Python</div>
               <h3 class="cat-card__title">Python</h3>
               <p class="cat-card__desc">Automações, ETL, análise exploratória e scripts de produtividade.</p>
             </div>
-            <span class="cat-card__arrow">Ver projetos →</span>
+            <span class="cat-card__arrow" data-i18n="seeAll">Ver todos</span>
           </a>
-
           <a href="outros.html" class="cat-card reveal">
             <div>
+              <div class="cat-card__num">03 · Outros</div>
               <h3 class="cat-card__title">Outros</h3>
               <p class="cat-card__desc">SQL, Excel avançado, web e experimentos multidisciplinares.</p>
             </div>
-            <span class="cat-card__arrow">Ver projetos →</span>
+            <span class="cat-card__arrow" data-i18n="seeAll">Ver todos</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ========== ÚLTIMOS PROJETOS ========== -->
-    <section class="section section--alt" id="projetos" aria-labelledby="ultimos-title">
+    <!-- ÚLTIMOS -->
+    <section class="section" id="projetos" aria-labelledby="ultimos-title">
       <div class="container">
         <div class="section__head reveal">
           <div>
-            <span class="eyebrow">Recentes</span>
-            <h2 id="ultimos-title" class="section-title">Últimos projetos</h2>
-            <p>Entregas mais recentes em produção e estudos pessoais.</p>
+            <div class="section__num">
+              <span class="big">03</span>
+              <span class="label">Recentes</span>
+            </div>
+            <h2 id="ultimos-title" class="section-title" data-i18n="latest.title">Últimos projetos</h2>
+            <p data-i18n="latest.desc">Entregas mais recentes em produção e estudos pessoais.</p>
           </div>
-          <a href="powerbi.html" class="btn btn--ghost btn--sm">Ver todos →</a>
+          <a href="powerbi.html" class="btn btn--ghost btn--sm"><span data-i18n="seeAll">Ver todos</span> →</a>
+        </div>
+        <div class="grid" data-render="latest"></div>
+      </div>
+    </section>
+
+    <!-- MELHORES -->
+    <section class="section section--alt" aria-labelledby="melhores-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <div class="section__num">
+              <span class="big">04</span>
+              <span class="label">Destaques</span>
+            </div>
+            <h2 id="melhores-title" class="section-title" data-i18n="best.title">Melhores projetos</h2>
+            <p data-i18n="best.desc">Casos com maior impacto técnico e de negócio.</p>
+          </div>
+          <a href="outros.html" class="btn btn--ghost btn--sm"><span data-i18n="seeAll">Ver todos</span> →</a>
+        </div>
+        <div class="grid" data-render="best"></div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="section" id="stack" aria-labelledby="stack-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <div class="section__num">
+              <span class="big">05</span>
+              <span class="label" data-i18n="stack.kicker">Ferramentas</span>
+            </div>
+            <h2 id="stack-title" class="section-title">
+              <span data-i18n="stack.title">O que estou</span> <em data-i18n="stack.title.em">usando</em> hoje.
+            </h2>
+            <p data-i18n="stack.desc">Uma foto do momento. O que já uso no trabalho e o que ainda estou estudando.</p>
+          </div>
         </div>
 
-        <div class="grid reveal">
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/project-1.svg" alt="Dashboard de KPI financeiros" loading="lazy" />
-              <span class="card__badge">Novo</span>
-            </div>
-            <div class="card__body">
-              <span class="card__category">Power BI · Profissional</span>
-              <h3 class="card__title">Dashboard de KPIs Financeiros</h3>
-              <p class="card__desc">Modelo com DAX avançado para análise de receita, despesas e provisões mensais.</p>
-              <div class="card__tags">
-                <span class="card__tag">Power BI</span>
-                <span class="card__tag">DAX</span>
-                <span class="card__tag">SQL</span>
-              </div>
-              <div class="card__footer">
-                <a href="powerbi.html" class="card__link" data-feedback="Abrindo projeto…">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/project-2.svg" alt="Automação de relatórios em Python" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Python · Profissional</span>
-              <h3 class="card__title">Automação de Relatórios</h3>
-              <p class="card__desc">Pipeline em Python que consolida planilhas e gera PDFs distribuídos por e-mail.</p>
-              <div class="card__tags">
-                <span class="card__tag">Python</span>
-                <span class="card__tag">Pandas</span>
-                <span class="card__tag">SMTP</span>
-              </div>
-              <div class="card__footer">
-                <a href="python.html" class="card__link" data-feedback="Abrindo projeto…">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/project-3.svg" alt="Relatório Power BI de RH" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Power BI · Pessoal</span>
-              <h3 class="card__title">Indicadores de RH</h3>
-              <p class="card__desc">Estudo de turnover, absenteísmo e headcount com segmentação dinâmica.</p>
-              <div class="card__tags">
-                <span class="card__tag">Power BI</span>
-                <span class="card__tag">Modelagem</span>
-              </div>
-              <div class="card__footer">
-                <a href="powerbi.html" class="card__link" data-feedback="Abrindo projeto…">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
+        <div class="stack-list reveal">
+          <div class="stack-item" style="--fill: 0.85">
+            <div class="stack-num">nº 01</div>
+            <div class="stack-name">Excel</div>
+            <div class="stack-level">Uso no trabalho</div>
+            <div class="stack-bar"><div class="stack-bar__fill"></div></div>
+          </div>
+          <div class="stack-item" style="--fill: 0.75">
+            <div class="stack-num">nº 02</div>
+            <div class="stack-name">Power BI</div>
+            <div class="stack-level">Uso no trabalho</div>
+            <div class="stack-bar"><div class="stack-bar__fill"></div></div>
+          </div>
+          <div class="stack-item" style="--fill: 0.7">
+            <div class="stack-num">nº 03</div>
+            <div class="stack-name">Automação de processos</div>
+            <div class="stack-level">Aplico no dia a dia</div>
+            <div class="stack-bar"><div class="stack-bar__fill"></div></div>
+          </div>
+          <div class="stack-item" style="--fill: 0.5">
+            <div class="stack-num">nº 04</div>
+            <div class="stack-name">DAX</div>
+            <div class="stack-level">Estudando</div>
+            <div class="stack-bar"><div class="stack-bar__fill"></div></div>
+          </div>
+          <div class="stack-item" style="--fill: 0.35">
+            <div class="stack-num">nº 05</div>
+            <div class="stack-name">SQL</div>
+            <div class="stack-level">Estudando</div>
+            <div class="stack-bar"><div class="stack-bar__fill"></div></div>
+          </div>
+          <div class="stack-item" style="--fill: 0.3">
+            <div class="stack-num">nº 06</div>
+            <div class="stack-name">Python</div>
+            <div class="stack-level">Estudando</div>
+            <div class="stack-bar"><div class="stack-bar__fill"></div></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== MELHORES PROJETOS ========== -->
-    <section class="section" aria-labelledby="melhores-title">
-      <div class="container">
-        <div class="section__head reveal">
-          <div>
-            <span class="eyebrow">Destaques</span>
-            <h2 id="melhores-title" class="section-title">Melhores projetos</h2>
-            <p>Casos com maior impacto técnico e de negócio.</p>
-          </div>
-          <a href="outros.html" class="btn btn--ghost btn--sm">Ver todos →</a>
-        </div>
-
-        <div class="grid reveal">
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/project-4.svg" alt="Motor de previsão de demanda" loading="lazy" />
-              <span class="card__badge">Top</span>
-            </div>
-            <div class="card__body">
-              <span class="card__category">Python · Profissional</span>
-              <h3 class="card__title">Previsão de Demanda</h3>
-              <p class="card__desc">Modelo preditivo com séries temporais para planejamento de insumos.</p>
-              <div class="card__tags">
-                <span class="card__tag">Python</span>
-                <span class="card__tag">Prophet</span>
-                <span class="card__tag">ETL</span>
-              </div>
-              <div class="card__footer">
-                <a href="python.html" class="card__link" data-feedback="Abrindo projeto…">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/project-5.svg" alt="Dashboard executivo" loading="lazy" />
-              <span class="card__badge">Top</span>
-            </div>
-            <div class="card__body">
-              <span class="card__category">Power BI · Profissional</span>
-              <h3 class="card__title">Dashboard Executivo</h3>
-              <p class="card__desc">Visão 360° dos indicadores estratégicos com drill-through e bookmarks.</p>
-              <div class="card__tags">
-                <span class="card__tag">Power BI</span>
-                <span class="card__tag">UX</span>
-              </div>
-              <div class="card__footer">
-                <a href="powerbi.html" class="card__link" data-feedback="Abrindo projeto…">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/project-6.svg" alt="Scraper de dados públicos" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Outros · Pessoal</span>
-              <h3 class="card__title">Scraper de Dados Públicos</h3>
-              <p class="card__desc">Coletor resiliente com retry, cache local e exportação para Parquet.</p>
-              <div class="card__tags">
-                <span class="card__tag">Python</span>
-                <span class="card__tag">Requests</span>
-                <span class="card__tag">Parquet</span>
-              </div>
-              <div class="card__footer">
-                <a href="outros.html" class="card__link" data-feedback="Abrindo projeto…">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== CONTATO ========== -->
+    <!-- CONTATO -->
     <section class="section section--alt" id="contato" aria-labelledby="contato-title">
       <div class="container">
         <div class="section__head reveal">
           <div>
-            <span class="eyebrow">Contato</span>
-            <h2 id="contato-title" class="section-title">Vamos conversar?</h2>
-            <p>Disponível para oportunidades e colaborações em análise de dados e automação.</p>
+            <div class="section__num">
+              <span class="big">06</span>
+              <span class="label" data-i18n="contact.kicker">Contato</span>
+            </div>
+            <h2 id="contato-title" class="section-title" data-i18n="contact.title">Vamos conversar?</h2>
+            <p data-i18n="contact.desc">Disponível para oportunidades e colaborações em análise de dados e automação.</p>
           </div>
-          <a href="mailto:contato@davidmartins.dev" class="btn btn--primary" data-feedback="Abrindo e-mail…">
-            contato@davidmartins.dev
-          </a>
+        </div>
+
+        <div class="about reveal">
+          <form id="contact-form" class="form" novalidate>
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label" for="c-name" data-i18n="contact.name">Nome</label>
+                <input class="form__input" id="c-name" name="name" type="text" autocomplete="name" required />
+                <span class="form__error" data-error="name"></span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="c-email" data-i18n="contact.email">E-mail</label>
+                <input class="form__input" id="c-email" name="email" type="email" autocomplete="email" required />
+                <span class="form__error" data-error="email"></span>
+              </div>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="c-subject" data-i18n="contact.subject">Assunto</label>
+              <input class="form__input" id="c-subject" name="subject" type="text" />
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="c-message" data-i18n="contact.message">Mensagem</label>
+              <textarea class="form__textarea" id="c-message" name="message" rows="5" required></textarea>
+              <span class="form__error" data-error="message"></span>
+            </div>
+            <button type="submit" class="btn btn--primary form__submit" data-i18n="contact.send">Enviar mensagem</button>
+          </form>
+
+          <div>
+            <ul class="footer__list" style="margin-top:0.5rem">
+              <li><a href="mailto:ofcdavidmartins@gmail.com" data-feedback="Abrindo cliente de e-mail…">✉ ofcdavidmartins@gmail.com</a></li>
+              <li><a href="https://www.linkedin.com/in/daviddmartins/" rel="noopener" target="_blank">in LinkedIn · /daviddmartins</a></li>
+              <li><a href="https://github.com/ofcdavidmartins-png" rel="noopener" target="_blank">◉ GitHub · /ofcdavidmartins</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <p class="footer__title">David<span style="color:var(--accent)">.</span>Martins</p>
-          <p>Análise de dados e automação de processos.<br />Brasília, DF.</p>
+          <p class="footer__title">David Martins</p>
+          <p>Otimização e automação de processos.<br />Brasília, DF.</p>
         </div>
         <div class="footer__col">
           <h4>Navegação</h4>
           <ul class="footer__list">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="powerbi.html">Power BI</a></li>
-            <li><a href="python.html">Python</a></li>
-            <li><a href="outros.html">Outros</a></li>
+            <li><a href="index.html" data-i18n="nav.home">Início</a></li>
+            <li><a href="powerbi.html" data-i18n="nav.powerbi">Power BI</a></li>
+            <li><a href="python.html" data-i18n="nav.python">Python</a></li>
+            <li><a href="outros.html" data-i18n="nav.outros">Outros</a></li>
           </ul>
         </div>
         <div class="footer__col">
           <h4>Contato</h4>
           <ul class="footer__list">
-            <li><a href="mailto:contato@davidmartins.dev">contato@davidmartins.dev</a></li>
-            <li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/" rel="noopener" target="_blank">GitHub</a></li>
+            <li><a href="mailto:ofcdavidmartins@gmail.com">ofcdavidmartins@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/daviddmartins/" rel="noopener" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/ofcdavidmartins-png" rel="noopener" target="_blank">GitHub</a></li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© <span id="currentYear"></span> David Martins. Todos os direitos reservados.</span>
-        <span>Feito com HTML, CSS e JS.</span>
+        <span>© <span id="currentYear"></span> David Martins. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
+        <span data-i18n="footer.made">Feito com HTML, CSS e JS.</span>
       </div>
     </div>
   </footer>
 
+  <button class="back-to-top" aria-label="Voltar ao topo">↑</button>
   <div class="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/i18n.js" defer></script>
+  <script src="js/projects.js" defer></script>
   <script src="js/script.js" defer></script>
 </body>
 </html>

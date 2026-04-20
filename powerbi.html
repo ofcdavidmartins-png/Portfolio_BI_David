@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Power BI · Projetos · David Martins</title>
-  <meta name="description" content="Projetos em Power BI de David Martins — dashboards corporativos, modelagem em DAX e análises executivas." />
+  <meta name="description" content="Projetos em Power BI de David Martins — dashboards, modelagem em DAX e análises executivas." />
+  <meta name="theme-color" content="#1A1814" />
+  <link rel="canonical" href="./powerbi.html" />
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,30 +18,47 @@
   <link rel="stylesheet" href="css/components.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__label">David Martins</div>
+    <div class="ticker__scroll">
+      <div class="ticker__track">
+        <span class="ticker__item">Power BI · DAX · SQL</span>
+        <span class="ticker__item">Dashboards corporativos</span>
+        <span class="ticker__item">Modelagem dimensional</span>
+        <span class="ticker__item">Brasília, DF</span>
+        <span class="ticker__item">Power BI · DAX · SQL</span>
+        <span class="ticker__item">Dashboards corporativos</span>
+        <span class="ticker__item">Modelagem dimensional</span>
+        <span class="ticker__item">Brasília, DF</span>
+      </div>
+    </div>
+  </div>
+
   <header class="navbar" role="banner">
     <div class="container navbar__inner">
-      <a href="index.html" class="navbar__brand" aria-label="David Martins - Início">
-        David<span>.</span>Martins
-      </a>
-      <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="index.html" class="navbar__brand"><span class="dot"></span> David Martins</a>
+      <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu"><span></span><span></span><span></span></button>
       <nav class="navbar__menu" id="primary-menu" aria-label="Principal">
-        <a class="navbar__link" href="index.html">Início</a>
-        <a class="navbar__link" href="powerbi.html">Power BI</a>
-        <a class="navbar__link" href="python.html">Python</a>
-        <a class="navbar__link" href="outros.html">Outros</a>
-        <a class="navbar__link" href="index.html#contato">Contato</a>
+        <a class="navbar__link" href="index.html"><span class="num">01</span><span data-i18n="nav.home">Início</span></a>
+        <a class="navbar__link" href="powerbi.html"><span class="num">02</span><span data-i18n="nav.powerbi">Power BI</span></a>
+        <a class="navbar__link" href="python.html"><span class="num">03</span><span data-i18n="nav.python">Python</span></a>
+        <a class="navbar__link" href="outros.html"><span class="num">04</span><span data-i18n="nav.outros">Outros</span></a>
+        <a class="navbar__link" href="index.html#contato"><span class="num">05</span><span data-i18n="nav.contact">Contato</span></a>
       </nav>
+      <div class="navbar__actions">
+        <button id="lang-toggle" class="icon-btn" type="button">EN</button>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Mudar tema"><span id="theme-icon">☼</span></button>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- Header da página -->
+  <main id="main">
     <section class="page-header">
       <div class="container reveal">
-        <p class="page-header__category">Categoria</p>
-        <h1 class="page-header__title">Power BI</h1>
+        <p class="page-header__category" data-i18n="nav.powerbi">Power BI</p>
+        <h1 class="page-header__title">Power <em>BI</em></h1>
         <p class="page-header__desc">
           Dashboards corporativos, modelagem dimensional em DAX e relatórios executivos
           com foco em clareza visual e performance.
@@ -47,125 +66,23 @@
       </div>
     </section>
 
-    <!-- Profissionais -->
-    <section class="section" aria-labelledby="profissional-title">
+    <section class="section" aria-labelledby="pbi-title">
       <div class="container">
         <div class="section__head reveal">
           <div>
-            <span class="eyebrow">Trabalho</span>
-            <h2 id="profissional-title" class="section-title">Projetos profissionais</h2>
-            <p>Entregas realizadas para equipes internas e clientes corporativos.</p>
+            <div class="section__num"><span class="big">01</span><span class="label">Projetos</span></div>
+            <h2 id="pbi-title" class="section-title">Todos os projetos em <em>Power BI</em></h2>
+            <p>Use o filtro para alternar entre entregas profissionais e estudos pessoais.</p>
           </div>
         </div>
 
-        <div class="grid reveal">
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/pbi-1.svg" alt="Dashboard financeiro" loading="lazy" />
-              <span class="card__badge">Destaque</span>
-            </div>
-            <div class="card__body">
-              <span class="card__category">Power BI · Profissional</span>
-              <h3 class="card__title">Painel Financeiro Corporativo</h3>
-              <p class="card__desc">Acompanhamento de receita, despesa e provisões com drill-through por área.</p>
-              <div class="card__tags">
-                <span class="card__tag">DAX</span>
-                <span class="card__tag">SQL</span>
-                <span class="card__tag">Modelagem</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/pbi-2.svg" alt="Dashboard de operações" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Power BI · Profissional</span>
-              <h3 class="card__title">Monitor Operacional</h3>
-              <p class="card__desc">Indicadores em tempo quase real com refresh incremental e alertas.</p>
-              <div class="card__tags">
-                <span class="card__tag">Power Query</span>
-                <span class="card__tag">Refresh</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/pbi-3.svg" alt="Relatório executivo" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Power BI · Profissional</span>
-              <h3 class="card__title">Relatório Executivo C-Level</h3>
-              <p class="card__desc">Visão consolidada de KPIs estratégicos com storytelling e bookmarks.</p>
-              <div class="card__tags">
-                <span class="card__tag">UX</span>
-                <span class="card__tag">DAX</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pessoais -->
-    <section class="section section--alt" aria-labelledby="pessoal-title">
-      <div class="container">
-        <div class="section__head reveal">
-          <div>
-            <span class="eyebrow">Estudos</span>
-            <h2 id="pessoal-title" class="section-title">Projetos pessoais</h2>
-            <p>Experimentos para estudo de técnicas e boas práticas.</p>
-          </div>
+        <div class="filters" data-target="#pbi-mount" role="group" aria-label="Filtros de projeto">
+          <button class="filter is-active" data-filter="all" data-i18n="filters.all">Todos</button>
+          <button class="filter" data-filter="profissional" data-i18n="filters.profissional">Profissionais</button>
+          <button class="filter" data-filter="pessoal" data-i18n="filters.pessoal">Pessoais</button>
         </div>
 
-        <div class="grid reveal">
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/pbi-4.svg" alt="Análise pessoal de finanças" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Power BI · Pessoal</span>
-              <h3 class="card__title">Finanças Pessoais</h3>
-              <p class="card__desc">Controle mensal com categorização automática e orçamento planejado vs real.</p>
-              <div class="card__tags">
-                <span class="card__tag">DAX</span>
-                <span class="card__tag">Excel</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="assets/images/pbi-5.svg" alt="Dashboard esportivo" loading="lazy" />
-            </div>
-            <div class="card__body">
-              <span class="card__category">Power BI · Pessoal</span>
-              <h3 class="card__title">Dashboard Esportivo</h3>
-              <p class="card__desc">Estatísticas de campeonatos com filtros dinâmicos por clube e temporada.</p>
-              <div class="card__tags">
-                <span class="card__tag">Power Query</span>
-                <span class="card__tag">APIs</span>
-              </div>
-              <div class="card__footer">
-                <a href="#" class="card__link" data-feedback="Projeto em breve">Ver projeto →</a>
-              </div>
-            </div>
-          </article>
-        </div>
+        <div class="grid" id="pbi-mount" data-render-category="powerbi" data-filter="all"></div>
       </div>
     </section>
   </main>
@@ -174,36 +91,39 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <p class="footer__title">David<span style="color:var(--accent)">.</span>Martins</p>
-          <p>Análise de dados e automação de processos.<br />Brasília, DF.</p>
+          <p class="footer__title">David Martins</p>
+          <p>Otimização e automação de processos.<br />Brasília, DF.</p>
         </div>
         <div class="footer__col">
           <h4>Navegação</h4>
           <ul class="footer__list">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="powerbi.html">Power BI</a></li>
-            <li><a href="python.html">Python</a></li>
-            <li><a href="outros.html">Outros</a></li>
+            <li><a href="index.html" data-i18n="nav.home">Início</a></li>
+            <li><a href="powerbi.html" data-i18n="nav.powerbi">Power BI</a></li>
+            <li><a href="python.html" data-i18n="nav.python">Python</a></li>
+            <li><a href="outros.html" data-i18n="nav.outros">Outros</a></li>
           </ul>
         </div>
         <div class="footer__col">
           <h4>Contato</h4>
           <ul class="footer__list">
-            <li><a href="mailto:contato@davidmartins.dev">contato@davidmartins.dev</a></li>
-            <li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/" rel="noopener" target="_blank">GitHub</a></li>
+            <li><a href="mailto:ofcdavidmartins@gmail.com">ofcdavidmartins@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/daviddmartins/" rel="noopener" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/ofcdavidmartins-png" rel="noopener" target="_blank">GitHub</a></li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© <span id="currentYear"></span> David Martins. Todos os direitos reservados.</span>
-        <span>Feito com HTML, CSS e JS.</span>
+        <span>© <span id="currentYear"></span> David Martins. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
+        <span data-i18n="footer.made">Feito com HTML, CSS e JS.</span>
       </div>
     </div>
   </footer>
 
+  <button class="back-to-top" aria-label="Voltar ao topo">↑</button>
   <div class="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/i18n.js" defer></script>
+  <script src="js/projects.js" defer></script>
   <script src="js/script.js" defer></script>
 </body>
 </html>
